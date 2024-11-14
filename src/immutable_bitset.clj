@@ -83,6 +83,13 @@
 ;  (iterator [this] (clojure.lang.SeqIterator. (seq this)))
 ;  (containsAll [this s] (every? #(contains? this %) s))
 
+  System.Collections.ICollection
+  (CopyTo [this arr idx] (throw (InvalidOperationException.)))
+
+  (get_Count [this] cnt)
+  (get_IsSynchronized [_] true)
+  (get_SyncRoot [this] this)
+
   System.Collections.IEnumerable
   (GetEnumerator [this] (clojure.lang.SeqEnumerator. this))
 
