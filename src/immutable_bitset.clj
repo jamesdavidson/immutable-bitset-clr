@@ -74,7 +74,7 @@
   (hasheq [this]
     (compile-if (resolve 'clojure.core/hash-unordered-coll)
       (hash-unordered-coll this)
-      (.hashCode this)))
+      (.GetHashCode this)))
 
 ;; maybe this should be 
 ;  java.util.Set
