@@ -291,7 +291,7 @@
     {:keys [base ordered?]
      :or {ordered? false
           base #{}}}]
-   (chuck/checking "set-like" n
+   (chuck/checking "set-like" {:num-tests n}
     [actions (gen-set-actions element-generator (transient? empty-coll) ordered?)]
     (let [[a b actions] (build-collections empty-coll base false actions)]
       (assert-equivalent-sets a b)))))
