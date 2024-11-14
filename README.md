@@ -8,9 +8,25 @@ BitSet.cs is Copyright © 1998, 1999, 2000, 2001, 2004, 2005  Free Software Foun
 
 I can load immutable_bitset.clj and run it with BitSet.cs and it sort of works.
 
-Tests in immutable_bitset_simple_check.clj pass but I also want to get immutable_bitset_test.clj up and running.
+Almost all generative tests pass but for benchmark tests will also need something like Criterium for ClojureCLR.
 
-Work in progress. For benchmarking will also need something like Criterium for ClojureCLR.
+The failing test case is the empty set but I'm unsure how to deal with the difference between:
+
+```
+(.hashCode #{}) ;; 0 on JVM
+(.GetHashCode #{}) ;; -15128758 on CLR
+```
+
+Not sure if this matters really. Zero hash code for empty collections may just be a best-effort JVM thing?
+
+```
+(def generic-hash-set (new |System.Collections.Generic.HashSet`1[System.Object]|))
+(.GetHashCode #{}) ;; -15128758
+(.GetHashCode generic-hash-set) ;; 13005406
+(= #{} #{} generic-hash-set) ;; true
+```
+
+Related: https://ask.clojure.org/index.php/1904/inconsistent-hash-with-java-collections
 
 # Project Moved to Contrib!
 
