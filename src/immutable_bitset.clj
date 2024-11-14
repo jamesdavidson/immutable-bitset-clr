@@ -180,7 +180,7 @@
     (when (== cnt -1)
       (set! cnt (->> m
                   vals
-                  (map #(.cardinality ^BitSet (.bitset ^Chunk %)))
+                  (map #(.Cardinality ^BitSet (.bitset ^Chunk %)))
                   (reduce +)
                   int)))
     cnt)
