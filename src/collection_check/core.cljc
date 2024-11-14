@@ -22,6 +22,7 @@
   (gen/fmap
     (fn [[x meta]]
       (if #?(:clj (instance? clojure.lang.IObj x)
+             :cljr (instance? clojure.lang.IObj x)
              :cljs (satisfies? cljs.core/IWithMeta x))
         (with-meta x {:foo meta})
         x))
@@ -117,6 +118,7 @@
 
 (defn- transient? [x]
   #?(:clj  (instance? clojure.lang.IEditableCollection x)
+     :cljr (instance? clojure.lang.IEditableCollection x)
      :cljs (satisfies? cljs.core/IEditableCollection x)))
 
 (defn- build-collections
@@ -170,13 +172,17 @@
 
 (defn assert-equivalent-collections
   [a b]
-  (is (= (count a) (count b) #?@(:clj [(.size a) (.size b)])))
+  (is (= (count a) (count b) #?@(:clj [(.size a) (.size b)]
+                                 :cljr [(.get_Count a) (.get_Count b)])))
   (is (= a b))
   (is (= b a))
   (is (= (hash a) (hash b)))
   #?@(:clj [(is (.equals ^Object a b))
             (is (.equals ^Object b a))
             (is (= (.hashCode ^Object a) (.hashCode ^Object b)))])
+  #?@(:cljr [(is (.Equals ^Object a b))
+             (is (.Equals ^Object b a))
+             (is (= (.GetHashCode ^Object a) (.GetHashCode ^Object b)))])
   (is (= a b
          (into (empty a) a)
          (into (empty b) b)
@@ -201,6 +207,8 @@
          (map #(get b %) (range (count b)))))
   #?(:clj (is (= (map #(.get a %) (range (count a)))
                  (map #(.get b %) (range (count b))))))
+  #?(:cljr (is (= (map #(.get a %) (range (count a)))
+                  (map #(.get b %) (range (count b))))))
   (is (= 0 (compare a b))))
 
 (defn assert-equivalent-sets [a b]
