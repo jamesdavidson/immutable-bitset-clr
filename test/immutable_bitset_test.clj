@@ -3,12 +3,12 @@
     [clojure test]
     [immutable-bitset])
   (:require
-    [criterium.core :as c]
+;    [criterium.core :as c]
     [clojure.set :as s]
-    [collection-check :as check]
-    [simple-check.generators :as gen])
+    [collection-check.core :as check]
+    [clojure.test.check.generators :as gen])
   (:import
-    [java.util BitSet]))
+    [Util BitSet]))
 
 (deftest test-equivalency
   (check/assert-set-like 1e3 (sparse-bitset) gen/pos-int)
@@ -69,37 +69,37 @@
     (is (= (hash s1a) (hash s1b) (hash s1c))))))
 
 ;;;
-
-(deftest ^:benchmark benchmark-modify-set
-  (println "sparse bitset into 1e3")
-  (c/quick-bench
-    (into (sparse-bitset) (range 1e3)))
-  (println "dense bitset into 1e3")
-    (c/quick-bench
-    (into (dense-bitset) (range 1e3)))
-  (println "normal set into 1e3")
-  (c/quick-bench
-    (into #{} (range 1e3)))
-  (println "mutable bitset add 1e3")
-  (c/quick-bench
-    (let [^BitSet bitset (BitSet. 1e3)]
-      (dotimes [idx 1e3]
-        (.set bitset idx true)))))
-
-(deftest ^:benchmark benchmark-check-set
-  (println "check sparse bitset")
-  (let [b (into (sparse-bitset) (range 1e3))]
-    (c/quick-bench
-      (contains? b 123)))
-  (println "check dense bitset")
-  (let [b (into (dense-bitset) (range 1e3))]
-    (c/quick-bench
-      (contains? b 123)))
-  (println "check normal set")
-  (let [s (into #{} (range 1e3))]
-    (c/quick-bench
-      (contains? s 123)))
-  (println "mutable bitset lookup")
-  (let [b (BitSet. 1e3)]
-    (c/quick-bench
-      (.get b 123))))
+;
+;(deftest ^:benchmark benchmark-modify-set
+;  (println "sparse bitset into 1e3")
+;  (c/quick-bench
+;    (into (sparse-bitset) (range 1e3)))
+;  (println "dense bitset into 1e3")
+;    (c/quick-bench
+;    (into (dense-bitset) (range 1e3)))
+;  (println "normal set into 1e3")
+;  (c/quick-bench
+;    (into #{} (range 1e3)))
+;  (println "mutable bitset add 1e3")
+;  (c/quick-bench
+;    (let [^BitSet bitset (BitSet. 1e3)]
+;      (dotimes [idx 1e3]
+;        (.set bitset idx true)))))
+;
+;(deftest ^:benchmark benchmark-check-set
+;  (println "check sparse bitset")
+;  (let [b (into (sparse-bitset) (range 1e3))]
+;    (c/quick-bench
+;      (contains? b 123)))
+;  (println "check dense bitset")
+;  (let [b (into (dense-bitset) (range 1e3))]
+;    (c/quick-bench
+;      (contains? b 123)))
+;  (println "check normal set")
+;  (let [s (into #{} (range 1e3))]
+;    (c/quick-bench
+;      (contains? s 123)))
+;  (println "mutable bitset lookup")
+;  (let [b (BitSet. 1e3)]
+;    (c/quick-bench
+;      (.get b 123))))

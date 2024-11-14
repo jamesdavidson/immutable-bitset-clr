@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Clojure" Version="1.12.0-alpha10" />
+    <PackageReference Include="clojure.test.check" Version="1.1.1" />
+    <PackageReference Include="clojure.tools.nrepl" Version="0.1.0-alpha1" />
+	  <!-- <PackageReference Include="Clojure.Cljr" Version="0.1.0-alpha4"/>
+    <PackageReference Include="clojure.core.cache" Version="1.0.226" />
+    <PackageReference Include="clojure.core.memoize" Version="1.0.257" />
+    <PackageReference Include="clojure.data.json" Version="2.4.1" />
+    <PackageReference Include="clojure.data.priority-map" Version="1.1.0" />
+    <PackageReference Include="clojure.tools.analyzer" Version="1.1.1" />
+    <PackageReference Include="clojure.tools.analyzer.clr" Version="1.2.4" />
+    <PackageReference Include="clojure.tools.namespace" Version="1.4.4" /> -->
+  </ItemGroup>
+
+</Project>
