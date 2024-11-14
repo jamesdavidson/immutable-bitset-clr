@@ -1,3 +1,17 @@
+# experimental port to CLR
+
+Original copyright © 2013 Zachary Tellman, distributed under the MIT License.
+
+BitSet.cs is Copyright © 1998, 1999, 2000, 2001, 2004, 2005  Free Software Foundation, Inc.  (see file for more information)
+
+## Status
+
+I can load immutable_bitset.clj and run it with BitSet.cs and it sort of works.
+
+Tests in immutable_bitset_simple_check.clj pass but I also want to get immutable_bitset_test.clj up and running.
+
+Work in progress. For benchmarking will also need something like Criterium for ClojureCLR.
+
 # Project Moved to Contrib!
 
 ztellman/immutable-bitset is now [clojure/data.int-map](https://github.com/clojure/data.int-map)
