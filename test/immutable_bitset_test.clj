@@ -7,8 +7,9 @@
     [clojure.set :as s]
     [collection-check.core :as check]
     [clojure.test.check.generators :as gen])
-  (:import
-    [Util BitSet]))
+;  (:import
+;    [immutable_bitset BitSet])
+    )
 
 (deftest test-equivalency
   (check/assert-set-like 1e3 (sparse-bitset) gen/pos-int)

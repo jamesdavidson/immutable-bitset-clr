@@ -4,6 +4,8 @@ Original copyright © 2013 Zachary Tellman, distributed under the MIT License.
 
 BitSet.cs is Copyright © 1998, 1999, 2000, 2001, 2004, 2005  Free Software Foundation, Inc.  (see file for more information)
 
+BitSet type in immutable_bitset.clj is translated from BitSet.cs
+
 ## Status
 
 I can load immutable_bitset.clj and run it with BitSet.cs and it sort of works.
