@@ -37,8 +37,8 @@ Make more REPL friendly. I get strange test failures which can be fixed by full 
 ```
 dotnet run &
 rep --port 1667 '(load-file "/home/james.davidson/immutable-bitset/src/immutable_bitset.clj") \
- (load-file "/home/james.davidson/immutable-bitset/src/chuck.cljr") \
- (load-file "/home/james.davidson/immutable-bitset/src/collection_check/core.cljc") \
+ (load-file "/home/james.davidson/immutable-bitset/test/chuck.cljr") \
+ (load-file "/home/james.davidson/immutable-bitset/test/collection_check/core.cljc") \
  (load-file "/home/james.davidson/immutable-bitset/test/immutable_bitset_simple_check.clj") \
  (in-ns (symbol "immutable-bitset-simple-check")) (run-tests)'
 ```
