@@ -1,3 +1,5 @@
+;; copied from https://github.com/gfredericks/test.chuck
+;; Copyright © 2016 Gary Fredericks, available via EPL-1.0
 (ns chuck
     (:require [clojure.test.check :as tc]
               [clojure.test.check.clojure-test :as tc.clojure-test]

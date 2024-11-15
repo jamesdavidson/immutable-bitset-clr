@@ -1,3 +1,5 @@
+;; copied from https://github.com/ztellman/collection-check
+;; Copyright © 2017 Zachary Tellman, distributed under the MIT License
 (ns collection-check.core
   (:require
     [clojure.string :as str]
