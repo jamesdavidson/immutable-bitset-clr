@@ -30,6 +30,21 @@ Not sure if this matters really. Zero hash code for empty collections may just b
 
 Related: https://ask.clojure.org/index.php/1904/inconsistent-hash-with-java-collections
 
+## TODO
+
+Make more REPL friendly. I get strange test failures which can be fixed by full restart:
+
+```
+dotnet run &
+rep --port 1667 '(load-file "/home/james.davidson/immutable-bitset/src/immutable_bitset.clj") \
+ (load-file "/home/james.davidson/immutable-bitset/src/chuck.cljr") \
+ (load-file "/home/james.davidson/immutable-bitset/src/collection_check/core.cljc") \
+ (load-file "/home/james.davidson/immutable-bitset/test/immutable_bitset_simple_check.clj") \
+ (in-ns (symbol "immutable-bitset-simple-check")) (run-tests)'
+```
+
+Profile and optimise. Avoid reflection etc. Compare with BitSet.cs
+
 # Project Moved to Contrib!
 
 ztellman/immutable-bitset is now [clojure/data.int-map](https://github.com/clojure/data.int-map)
