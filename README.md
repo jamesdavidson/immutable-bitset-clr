@@ -8,7 +8,7 @@ BitSet type in immutable_bitset.clj is translated from BitSet.cs
 
 ## Status
 
-I can load immutable_bitset.clj and run it with BitSet.cs and it sort of works.
+I can load immutable_bitset.clj and it works no problem.
 
 Almost all generative tests pass but for benchmark tests will also need something like Criterium for ClojureCLR.
 
