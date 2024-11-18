@@ -43,7 +43,7 @@ rep --port 1667 '(load-file "/home/james.davidson/immutable-bitset/src/immutable
  (in-ns (symbol "immutable-bitset-simple-check")) (run-tests)'
 ```
 
-Profile and optimise. Avoid reflection etc. Compare with BitSet.cs
+Profile and optimise. Compare with BitSet.cs
 
 # Project Moved to Contrib!
 

@@ -33,7 +33,7 @@
   (^Boolean ContainsAll [other]))
 
 (deftype BitSet
-  [^:volatile-mutable bits]
+  [^:volatile-mutable ^longs bits]
 
   Object
   (ToString [this]
@@ -184,11 +184,11 @@
   MutableBitSet
   (And [this bs]
     (let [n (.Length bits)
-          m (min n (.Length (.bits bs)))]
+          m (min n (.Length ^longs (.bits ^BitSet bs)))]
       (loop [i 0]
         (when (< i n)
               (if (< i m)
-                (aset bits i (bit-and (aget bits i) (aget (.bits bs) i)))
+                (aset bits i (bit-and (aget bits i) (aget ^longs (.bits ^BitSet bs) i)))
                 (aset bits i 0))
               (recur (inc i))))))
 
@@ -204,10 +204,10 @@
 
   (AndNot [this bs]
     (let [n (.Length bits)
-          m (min n (.Length (.bits bs)))]
+          m (min n (.Length ^longs (.bits ^BitSet bs)))]
       (loop [i 0]
         (when (< i m)
-              (aset bits i (bit-and (aget bits i) (bit-not (aget (.bits bs) i))))
+              (aset bits i (bit-and (aget bits i) (bit-not (aget ^longs (.bits ^BitSet bs) i))))
               (recur (inc i))))))
 
   ;        public void AndNot(BitSet bs)
@@ -553,11 +553,11 @@
   ;        }
 
   (Or [this bs]
-    (let [n (.Length (.bits bs))]
+    (let [n (.Length ^longs (.bits ^BitSet bs))]
       (.Ensure this (dec n))
       (loop [i 0]
         (when (< i n)
-              (aset bits i (bit-or (aget bits i) (aget (.bits bs) i)))
+              (aset bits i (bit-or (aget bits i) (aget ^longs (.bits ^BitSet bs) i)))
               (recur (inc i))))))
 
   ;        /// <summary>
